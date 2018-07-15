@@ -18,6 +18,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import { mailFolderListItems, otherMailFolderListItems } from "./tileData";
+import Editor from "./Components/Editor";
 
 const drawerWidth = 240;
 
@@ -76,12 +77,15 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
     alignItems: "center",
     justifyContent: "flex-end",
     padding: "0 8px",
+    flexShrink: 0,
     ...theme.mixins.toolbar
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing.unit,
+    display: "flex",
+    flexDirection: "column"
   }
 });
 
@@ -126,7 +130,7 @@ class MiniDrawer extends React.Component<
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap>
-              Collaborative Editing Markdown (Demo)
+              Co-Editing Markdown (Demo)
             </Typography>
           </Toolbar>
         </AppBar>
@@ -156,9 +160,7 @@ class MiniDrawer extends React.Component<
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap>
-            {"You think water moves fast? You should see ice."}
-          </Typography>
+          <Editor />
         </main>
       </div>
     );
