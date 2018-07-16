@@ -1,0 +1,19 @@
+.CodeMirror {
+  font-family: "Consolas", "Microsoft YaHei", Courier, monospace;
+  height: 100%;
+}
+
+.users-cursors {
+  width: 0;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+  }
+}

@@ -11,6 +11,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -59,7 +60,8 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    })
+    }),
+    height: "100%"
   },
   drawerPaperClose: {
     overflowX: "hidden",
@@ -85,7 +87,8 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    height: "100%"
   }
 });
 
@@ -160,7 +163,15 @@ class MiniDrawer extends React.Component<
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Editor />
+          <Grid container spacing={24} style={{ flex: 1 }}>
+            <Grid item xs>
+              <Editor />
+            </Grid>
+            <Grid item xs>
+              sajfashjfbsh
+              {/* <Paper className={classes.paper}>xs</Paper> */}
+            </Grid>
+          </Grid>
         </main>
       </div>
     );
