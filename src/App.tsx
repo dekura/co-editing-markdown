@@ -20,6 +20,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import { mailFolderListItems, otherMailFolderListItems } from "./tileData";
 import Editor from "./Components/Editor";
+import Preview from "./Components/Preview";
 
 const drawerWidth = 240;
 
@@ -168,8 +169,7 @@ class MiniDrawer extends React.Component<
               <Editor />
             </Grid>
             <Grid item xs>
-              sajfashjfbsh
-              {/* <Paper className={classes.paper}>xs</Paper> */}
+              <Preview />
             </Grid>
           </Grid>
         </main>
