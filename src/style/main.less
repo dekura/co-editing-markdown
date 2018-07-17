@@ -17,3 +17,43 @@
     left: 0;
   }
 }
+.codemirror-wrapper {
+  *::-webkit-scrollbar {
+    width: 10px;
+    opacity: 0.6;
+    outline: none;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+    opacity: 0.6;
+    outline: none;
+  }
+
+  *::-webkit-scrollbar-track {
+    // background: #ddd;
+    border-radius: 20px;
+    opacity: 0.6;
+    outline: none;
+  }
+
+  *::-webkit-scrollbar:horizontal {
+    height: 10px;
+    outline: none;
+  }
+
+  // *::-webkit-scrollbar-track:horizontal {
+  //   height: 10px;
+  // }
+
+  // *::-webkit-scrollbar-track:horizontal {
+  //   height: 10px;
+  // }
+}
+
+.CodeMirror {
+  .CodeMirror-scrollbar-filler {
+    opacity: 0;
+  }
+}

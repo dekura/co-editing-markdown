@@ -17,11 +17,26 @@ export default class AceEditor extends React.Component {
   render() {
     return (
       <div
-        ref={ele => {
-          this.editorContainerRef = ele;
+        style={{
+          flex: 1,
+          height: "100%",
+          overflow: "auto",
+          position: "relative"
         }}
-        style={{ flex: 1, height: "100%", overflow: "auto" }}
-      />
+      >
+        <div
+          ref={ele => {
+            this.editorContainerRef = ele;
+          }}
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            overflow: "auto"
+          }}
+          className="codemirror-wrapper"
+        />
+      </div>
     );
   }
 
