@@ -109,6 +109,12 @@ class MiniDrawer extends React.Component<
     this.setState({ open: false });
   };
 
+  handleChange = (doc: CodeMirror.Doc) => {
+    this.updatePreviewContent(doc.getValue());
+  };
+
+  updatePreviewContent = (_: string) => {};
+
   render() {
     const { classes, theme } = this.props;
 
@@ -166,10 +172,14 @@ class MiniDrawer extends React.Component<
           <div className={classes.toolbar} />
           <Grid container spacing={24} style={{ flex: 1 }}>
             <Grid item xs>
-              <Editor />
+              <Editor onChange={this.handleChange} />
             </Grid>
             <Grid item xs>
-              <Preview />
+              <Preview
+                action={setContent => {
+                  this.updatePreviewContent = setContent;
+                }}
+              />
             </Grid>
           </Grid>
         </main>

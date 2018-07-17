@@ -8,7 +8,9 @@ import "codemirror/mode/css/css";
 
 import CodeMirror from "codemirror";
 
-export default class AceEditor extends React.Component {
+export default class AceEditor extends React.Component<{
+  onChange: (text: CodeMirror.Doc) => void;
+}> {
   editorContainerRef: HTMLDivElement | null = null;
 
   state = {
@@ -50,6 +52,10 @@ export default class AceEditor extends React.Component {
 
       this.setState({
         editor
+      });
+
+      CodeMirror.on(editor.getDoc(), "change", doc => {
+        this.props.onChange(doc);
       });
     }
   }
