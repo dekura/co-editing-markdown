@@ -1,8 +1,7 @@
 import * as React from "react";
 import marked from "marked";
 // import { markdown } from "./text";
-import virtualize from "../utils/virtualize";
-import hljs from "highlight.js";
+import mdVirtualize from "../utils/virtualize";
 
 export default class Preview extends React.Component<{
   action: (setContent: (md: string) => void) => void;
@@ -50,7 +49,7 @@ export default class Preview extends React.Component<{
             ele && (this.previewContainer = ele);
           }}
         >
-          {virtualize(doc)}
+          {mdVirtualize(doc)}
         </div>
       </div>
     );
@@ -60,24 +59,5 @@ export default class Preview extends React.Component<{
     this.props.action(content => {
       this.setState({ content });
     });
-  }
-
-  didUpdateTimer = 0;
-
-  componentDidUpdate() {
-    window.clearTimeout(this.didUpdateTimer);
-    this.didUpdateTimer = window.setTimeout(() => this.highlight(), 200);
-  }
-
-  highlight() {
-    // TODO: do cache here.
-    if (this.previewContainer) {
-      const codeblocks = Array.from(
-        this.previewContainer.querySelectorAll("pre > code")
-      );
-      codeblocks.forEach(codeblock => {
-        hljs.highlightBlock(codeblock);
-      });
-    }
   }
 }

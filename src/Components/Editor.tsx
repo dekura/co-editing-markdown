@@ -4,6 +4,7 @@ import "codemirror/mode/clike/clike";
 import "codemirror/mode/gfm/gfm";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/markdown/markdown";
+import "codemirror/mode/python/python";
 import "codemirror/mode/css/css";
 
 import CodeMirror from "codemirror";
