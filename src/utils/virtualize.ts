@@ -18,10 +18,11 @@ function virtualize(root: Node, key: string = ""): React.ReactNode {
     })
     .filter(node => node !== "\n");
 
-  const attrs: { [k: string]: string } = {};
+  const attrs: { [k: string]: string | boolean } = {};
   if (root instanceof Element) {
     Array.from(root.attributes).forEach(attr => {
-      attrs[attr.name === "class" ? "className" : attr.name] = attr.value;
+      attrs[attr.name === "class" ? "className" : attr.name] =
+        attr.value === "" ? true : attr.value;
     });
   }
   const props =
