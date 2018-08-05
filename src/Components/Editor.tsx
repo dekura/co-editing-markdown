@@ -48,7 +48,27 @@ export default class AceEditor extends React.Component<{
       const editor = CodeMirror(this.editorContainerRef, {
         mode: "gfm",
         theme: "monokai",
-        lineNumbers: true
+        indentUnit: 4,
+        lineNumbers: true,
+        indentWithTabs: false,
+        extraKeys: {
+          Tab: function(cm: any) {
+            if (cm.somethingSelected()) {
+              cm.indentSelection("add");
+            } else {
+              cm.replaceSelection(
+                cm.getOption("indentWithTabs")
+                  ? "\t"
+                  : Array(cm.getOption("indentUnit") + 1).join(" "),
+                "end",
+                "+input"
+              );
+            }
+          },
+          "Shift+Tab": function(cm: any) {
+            cm.indentSelection("subtract");
+          }
+        }
       });
 
       this.setState({
@@ -57,6 +77,14 @@ export default class AceEditor extends React.Component<{
 
       CodeMirror.on(editor.getDoc(), "change", doc => {
         this.props.onChange(doc);
+      });
+
+      let h = 0;
+      CodeMirror.on(editor.getDoc(), "beforeSelectionChange", () => {
+        window.clearTimeout(h);
+        h = window.setTimeout(() => {
+          console.log(`selected: ${editor.getDoc().getSelection().length}`);
+        }, 100);
       });
     }
   }
