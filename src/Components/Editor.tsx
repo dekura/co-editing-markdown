@@ -75,9 +75,8 @@ export default class AceEditor extends React.Component<{
         editor
       });
 
-      CodeMirror.on(editor.getDoc(), "change", (doc, change) => {
-        this.props.onChange(doc);
-        console.log(change);
+      editor.on("changes", _ => {
+        this.props.onChange(editor.getDoc());
       });
 
       let h = 0;
