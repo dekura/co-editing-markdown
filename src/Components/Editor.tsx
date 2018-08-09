@@ -86,6 +86,14 @@ export default class AceEditor extends React.Component<{
           console.log(`selected: ${editor.getDoc().getSelection().length}`);
         }, 100);
       });
+
+      let h = 0;
+      CodeMirror.on(editor.getDoc(), "beforeSelectionChange", () => {
+        window.clearTimeout(h);
+        h = window.setTimeout(() => {
+          console.log(`selected: ${editor.getDoc().getSelection().length}`);
+        }, 100);
+      });
     }
   }
 }
