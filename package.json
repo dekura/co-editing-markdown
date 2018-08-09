@@ -22,7 +22,7 @@
     "classnames": "^2.2.6",
     "codemirror": "^5.39.0",
     "highlight.js": "^9.12.0",
-    "marked": "^0.4.0",
+    "marked": "git+https://github.com/farawaaay/marked.git",
     "mathjax": "^2.7.5",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"

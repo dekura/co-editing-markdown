@@ -14,8 +14,6 @@ export default class extends React.Component<CodeblockProps> {
     codeblockEle.innerHTML = `<code class="${langClass}">${code}</code>`;
 
     highlightBlock(codeblockEle);
-
-    console.log(codeblockEle);
     return codeVirtualize(codeblockEle);
   }
 
